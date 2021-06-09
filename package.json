@@ -3,10 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "author": "Camilo Nieto <cenietob@gmail.com>",
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "test": "nyc mocha",
+    "posttest": "nyc report --reporter=json"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://github.com/cenietob/GHA-test#readme",
+  "repository": {
+    "url": "git@github.com:cenietob/GHA-test.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/cenietob/GHA-test/issues"
+  }
 }
