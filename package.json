@@ -15,12 +15,12 @@
   },
   "keywords": [],
   "license": "ISC",
-  "homepage": "https://github.com/cenietob/GHA-test#readme",
+  "homepage": "https://github.com/cenietob/gha-test#readme",
   "repository": {
-    "url": "git@github.com:cenietob/GHA-test.git",
+    "url": "git@github.com:cenietob/gha-test.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/cenietob/GHA-test/issues"
+    "url": "https://github.com/cenietob/gha-test/issues"
   }
 }
