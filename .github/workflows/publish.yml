@@ -64,6 +64,7 @@ jobs:
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
+    environment: production_environment
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -76,6 +77,7 @@ jobs:
           name: build.zip
       - name: Unzip build.zip
         run: unzip -q build.zip
+      - run: echo ${{secrets.PUBLISH_NPM_TOKEN}}
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM_TOKEN}}
@@ -83,6 +85,7 @@ jobs:
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
+    environment: production_environment
     permissions:
       contents: read
       packages: write
