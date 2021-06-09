@@ -1,0 +1,31 @@
+name: Push
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - run: npm ci
+      - run: npm test      
+      - name: Zip node_modules
+        run: zip -9qry "build.zip" "./" -i "node_modules/*"
+      - name: Upload build.zip
+        uses: actions/upload-artifact@v2
+        with:
+          name: build.zip
+          path: build.zip
+      - uses: codecov/codecov-action@v1.0.6
+        with:
+          files: coverage/*.json
+          name: codecov-GHA-test 
+          fail_ci_if_error: true 
+          verbose: true 
+      
