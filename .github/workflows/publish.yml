@@ -94,7 +94,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 12
-          registry-url: https://npm.pkg.github.com/
+          registry-url: https://npm.pkg.github.com/cenietob/
           scope: '@cenietob'
       - name: Download build.zip
         uses: actions/download-artifact@v2
