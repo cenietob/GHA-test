@@ -18,12 +18,6 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm test
-      - uses: codecov/codecov-action@v1.0.6
-        with:
-          files: coverage/*.json
-          name: codecov-GHA-test 
-          fail_ci_if_error: true 
-          verbose: true 
       - name: Zip node_modules
         run: zip -9qry "build.zip" "./" -i "node_modules/*"
       - name: Upload build.zip
@@ -31,6 +25,12 @@ jobs:
         with:
           name: build.zip
           path: build.zip
+      - uses: codecov/codecov-action@v1
+        with:
+          files: coverage/*.json
+          name: codecov-gha-test 
+          fail_ci_if_error: true 
+          verbose: true 
 
   release:
     needs: build
