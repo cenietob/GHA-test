@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const fn = require('../index')
+const fn = require('../lib/index')
 
 describe('Some Suit', function () {
   it('Some Test', function () {
