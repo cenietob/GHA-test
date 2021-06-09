@@ -102,6 +102,15 @@ jobs:
           name: build.zip
       - name: Unzip build.zip
         run: unzip -q build.zip
+      - name: Update Package Name
+        run: |
+          sed -i 's,"name": "${{ env.package_name }}","name": "@${{ env.actor_name }}/${{ env.package_name }}",' package.json
+          cat package.json
+
+      - name: Update Publish Config
+        run: |
+          sed -i 's^registry-url^npm.pkg.github.com/@${{ env.actor_name }}^' package.json
+          cat package.json
       - run: echo "registry=https://npm.pkg.github.com/@cenietob" >> .npmrc
       - run: npm publish
         env:
