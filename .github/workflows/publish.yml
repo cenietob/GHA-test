@@ -77,7 +77,6 @@ jobs:
           name: build.zip
       - name: Unzip build.zip
         run: unzip -q build.zip
-      - run: echo ${{secrets.PUBLISH_NPM_TOKEN}}
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM_TOKEN}}
@@ -85,6 +84,7 @@ jobs:
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'cenietob'
     environment: production_environment
     permissions:
       contents: read
@@ -94,7 +94,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 12
-          registry-url: https://npm.pkg.github.com/cenietob/
+          registry-url: https://npm.pkg.github.com/
           scope: '@cenietob'
       - name: Download build.zip
         uses: actions/download-artifact@v2
@@ -102,6 +102,7 @@ jobs:
           name: build.zip
       - name: Unzip build.zip
         run: unzip -q build.zip
+      - run: echo "registry=https://npm.pkg.github.com/@cenietob" >> .npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
