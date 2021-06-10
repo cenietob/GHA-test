@@ -1,3 +1,6 @@
 {
-    "*.js": ["npm run format", "git add"]
-  }
+    "*.js": [
+        "eslint",
+        "prettier --write"
+    ]
+}
