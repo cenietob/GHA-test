@@ -8,8 +8,7 @@
     "test": "nyc mocha",
     "posttest": "nyc report --reporter=json",
     "lint": "eslint ./",
-    "format": "prettier --write \"*/**/*.js\"",
-    "postlint": "eslint ./ --fix"
+    "format": "prettier --write \"*/**/*.js\""
   },
   "devDependencies": {
     "chai": "^4.2.0",
