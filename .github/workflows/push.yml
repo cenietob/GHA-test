@@ -1,13 +1,11 @@
 name: Push
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    environment: production_environment
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -15,17 +13,16 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm test      
-      - name: Zip node_modules
-        run: zip -9qry "build.zip" "./" -i "node_modules/*"
-      - name: Upload build.zip
-        uses: actions/upload-artifact@v2
-        with:
-          name: build.zip
-          path: build.zip
       - uses: codecov/codecov-action@v1
         with:
           files: coverage/*.json
           name: codecov-GHA-test 
           fail_ci_if_error: true 
           verbose: true 
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
       
