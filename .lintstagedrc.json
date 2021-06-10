@@ -1,3 +1,3 @@
 {
-    "*.js": ["prettier --write \"lib/**/*.js\"", "git add"]
+    "*.js": ["npm run format", "git add"]
   }
