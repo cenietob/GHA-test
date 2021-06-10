@@ -29,7 +29,8 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         with:
           args:
-            args: Dsonar.organization=cenietob
+            args: 
+              Dsonar.organization=cenietob
               Dsonar.projectKey=cenietob_gha-test
               Dsonar.sources=lib/
               Dsonar.test.exclusions=tests/**
