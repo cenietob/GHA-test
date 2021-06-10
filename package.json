@@ -8,7 +8,7 @@
     "prepare": "husky install",
     "test": "nyc mocha",
     "posttest": "nyc report --reporter=json",
-    "lint": "eslint ./",
+    "lint": "eslint ./ --fix",
     "format": "prettier --write \"*/**/*.js\"",
     "lint-staged": "lint-staged"
   },
