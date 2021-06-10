@@ -1,6 +1,6 @@
 {
     "*.js": [
-        "eslint",
-        "prettier --write"
+        "npm run lint",
+        "npm run format"
     ]
 }
