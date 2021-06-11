@@ -5,7 +5,6 @@
   "main": "lib/index.js",
   "author": "Camilo Nieto <cenietob@gmail.com>",
   "scripts": {
-    "prepare": "npx husky install",
     "test": "nyc mocha",
     "posttest": "nyc report --reporter=json",
     "lint": "eslint ./ --fix",
