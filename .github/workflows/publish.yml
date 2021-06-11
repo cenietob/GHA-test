@@ -120,6 +120,6 @@ jobs:
           sed -i 's^registry-url^npm.pkg.github.com/@${{ env.actor_name }}^' package.json
           cat package.json
       - run: echo "registry=https://npm.pkg.github.com/@cenietob" >> .npmrc
-      - run: npm publish
+      - run: npm publish --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
