@@ -1,6 +1,6 @@
 {
   "name": "gha-test",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "",
   "main": "lib/index.js",
   "author": "Camilo Nieto <cenietob@gmail.com>",
