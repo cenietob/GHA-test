@@ -59,7 +59,7 @@ jobs:
           asset_content_type: application/zip
 
   publish-npm:
-    needs: build
+    needs: release
     runs-on: ubuntu-latest
     environment: production_environment
     steps:
@@ -74,12 +74,12 @@ jobs:
           name: build.zip
       - name: Unzip build.zip
         run: unzip -q build.zip
-      - run: npm publish --access public
+      - run: npm publish 
         env:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM_TOKEN}}
 
   publish-gpr:
-    needs: build
+    needs: release
     runs-on: ubuntu-latest
     if: github.repository_owner == 'cenietob'
     environment: production_environment
@@ -120,6 +120,6 @@ jobs:
           sed -i 's^registry-url^npm.pkg.github.com/@${{ env.actor_name }}^' package.json
           cat package.json
       - run: echo "registry=https://npm.pkg.github.com/@cenietob" >> .npmrc
-      - run: npm publish
+      - run: npm publish --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
