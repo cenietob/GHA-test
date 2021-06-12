@@ -4,10 +4,6 @@ on:
   push:
     tags:
       - 'v*'
-    branches:
-      - master
-      - develop
-      - 'releases/**'
 
 jobs:
   build:
@@ -63,7 +59,7 @@ jobs:
           asset_content_type: application/zip
 
   publish-npm:
-    needs: build
+    needs: release
     runs-on: ubuntu-latest
     environment: production_environment
     steps:
@@ -83,7 +79,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM_TOKEN}}
 
   publish-gpr:
-    needs: build
+    needs: release
     runs-on: ubuntu-latest
     if: github.repository_owner == 'cenietob'
     environment: production_environment
